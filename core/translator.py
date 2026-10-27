@@ -15,15 +15,39 @@ DEFAULT_MODEL_NAME = "Helsinki-NLP/opus-mt-zh-vi"
 
 def find_cached_snapshot(model_name: str, cache_dir: Optional[str | Path]) -> Optional[str]:
     """Find local snapshot folder for model if already cached to avoid HuggingFace network requests."""
-    if not cache_dir:
-        return None
-    cache_path = Path(cache_dir).resolve()
     repo_folder = f"models--{model_name.replace('/', '--')}"
-    snapshots_dir = cache_path / repo_folder / "snapshots"
-    if snapshots_dir.exists() and snapshots_dir.is_dir():
-        for snap in snapshots_dir.iterdir():
-            if snap.is_dir() and (snap / "config.json").exists():
-                return str(snap)
+    candidate_dirs: List[Path] = []
+
+    if cache_dir:
+        c_path = Path(cache_dir).resolve()
+        candidate_dirs.append(c_path)
+        # Check grandparent models folder (e.g. if in dist\DouyinVNStudio\models -> Desktop\DouYin\models)
+        candidate_dirs.append(c_path.parent.parent / "models")
+
+    # Project root models
+    candidate_dirs.append(Path(__file__).resolve().parent.parent / "models")
+    # User HuggingFace hub cache
+    candidate_dirs.append(Path.home() / ".cache" / "huggingface" / "hub")
+
+    seen = set()
+    for base in candidate_dirs:
+        try:
+            base_res = base.resolve()
+            if base_res in seen or not base_res.exists():
+                continue
+            seen.add(base_res)
+
+            snapshots_dir = base_res / repo_folder / "snapshots"
+            if snapshots_dir.exists() and snapshots_dir.is_dir():
+                for snap in snapshots_dir.iterdir():
+                    if snap.is_dir() and (snap / "config.json").exists():
+                        # Strict check: snapshot must have weight file (bin or safetensors)
+                        has_weights = (snap / "pytorch_model.bin").exists() or (snap / "model.safetensors").exists()
+                        if has_weights:
+                            return str(snap)
+        except Exception:
+            continue
+
     return None
 
 
