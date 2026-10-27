@@ -1,0 +1,43 @@
+{
+  "ffmpeg_path": "C:\\Users\\VI_DOAN\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-8.1.1-full_build\\bin\\ffmpeg.exe",
+  "ffprobe_path": "C:\\Users\\VI_DOAN\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-8.1.1-full_build\\bin\\ffprobe.exe",
+  "vsr_path": "",
+  "workspace_dir": "C:\\Users\\VI_DOAN\\Desktop\\DouYin\\workspace",
+  "models_cache_dir": "C:\\Users\\VI_DOAN\\Desktop\\DouYin\\models",
+  "output_dir": "C:\\Users\\VI_DOAN\\Desktop\\DouYin\\output",
+  "logs_dir": "C:\\Users\\VI_DOAN\\Desktop\\DouYin\\logs",
+  "whisper_model": "tiny",
+  "whisper_device": "cpu",
+  "whisper_compute_type": "int8",
+  "translator_model": "Helsinki-NLP/opus-mt-zh-vi",
+  "translator_device": "cpu",
+  "subtitle_remove_mode": "ffmpeg_delogo",
+  "subtitle_zone_mode": "auto",
+  "vsr_inpaint_mode": "sttn-auto",
+  "subtitle_area_ratio": [
+    0.75,
+    0.95,
+    0.05,
+    0.95
+  ],
+  "subtitle_style": {
+    "font_name": "Segoe UI",
+    "font_size": 24,
+    "primary_color": "&H00FFFFFF",
+    "outline_color": "&H00000000",
+    "back_color": "&H80000000",
+    "outline_width": 2.5,
+    "bold": true,
+    "italic": false,
+    "alignment": 2,
+    "margin_v": 35,
+    "margin_l": 20,
+    "margin_r": 20,
+    "max_chars_per_line": 38
+  },
+  "auto_pipeline": true,
+  "offline_mode": false,
+  "mock_mode": false,
+  "crf": 18,
+  "preset": "veryfast"
+}

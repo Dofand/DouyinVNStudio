@@ -1,0 +1,65 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments & Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# PyInstaller / Distribution
+dist/
+build/
+*.manifest
+*.spec.bak
+
+# AI Models & Weights (Heavy binaries)
+models/
+*.onnx
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# Application workspaces, temporary tasks & outputs
+workspace/
+output/
+scratch/
+logs/
+*.log
+app_startup.log
+
+# Databases & local caches
+*.db
+*.sqlite
+*.sqlite3
+data/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Media test artifacts in root
+*.mp4
+*.mov
+*.mkv
+*.flv
+*.webm
+*.avi
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
